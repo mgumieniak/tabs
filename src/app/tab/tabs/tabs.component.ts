@@ -39,13 +39,6 @@ export class TabsComponent implements AfterContentInit {
     }
 
     this.activeTab = tabItem;
-
     tabItem.isActive = true;
   }
-
-  log(text){
-    console.log(text);
-  }
-
-
 }
