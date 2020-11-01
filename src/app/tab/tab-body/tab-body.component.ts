@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-tab-body',
@@ -9,8 +9,12 @@ import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild} from
 export class TabBodyComponent implements OnInit {
   @ViewChild(TemplateRef)
   bodyContent: TemplateRef<any>;
+  @Input()
+  info: string;
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }
