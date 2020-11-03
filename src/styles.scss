@@ -1,3 +1,50 @@
+// colors
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #0d6efd !default;
+
+//opacity
+$opacity-small: 0.3;
+$opacity-medium: 0.6;
+$opacity-normal: 1;
+
+// distance
+$small-dist: 1em !default;
+$medium-dist: 1.5em !default;
+$big-dist: 2em !default;
+
+$border-width: 1px !default;
+$border-color: $gray-300 !default;
+
+// control
+$control-height: 48px !default;
+$control-width: 160px !default;
+
+// body
+$body-bg: $white !default;
+
+
+// tabs
+$tab-width: $control-width;
+$tab-height: $control-height;
+
+$tab-indicator-width: $tab-width;
+$tab-indicator-height: 2px;
+
+$tab-border-width: $border-width;
+$tab-border-color: $border-color;
+
+
 :root {
   box-sizing: border-box;
 }
@@ -5,7 +52,7 @@
 *,
 *::before,
 *::after {
-  box-sizing:inherit;
+  box-sizing: inherit;
 }
 
 * {
@@ -13,10 +60,6 @@
 }
 
 body * + * {
-  //margin-top: 1.5 em;
+  margin-top: $medium-dist;
 }
 
-//// distance
-//$small-dist 1 em !default;
-//$medium-dist 1.5 em !default;
-//$big-dist 2 em !default;

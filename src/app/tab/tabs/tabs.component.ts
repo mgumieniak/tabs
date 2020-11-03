@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList} from '@angular/core';
+import {AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList} from '@angular/core';
 import {TabItemComponent} from '../tab-item/tab-item.component';
 import {Observable} from 'rxjs';
 import {delay, map, startWith} from 'rxjs/operators';
@@ -16,6 +16,8 @@ export class TabsComponent implements AfterContentInit {
   tabItems$: Observable<TabItemComponent[]>;
 
   activeTab: TabItemComponent;
+
+  currentIndex = 0;
 
   constructor() {
   }

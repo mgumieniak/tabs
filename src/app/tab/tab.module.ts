@@ -4,6 +4,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { TabItemComponent } from './tab-item/tab-item.component';
 import { TabLabelComponent } from './tab-label/tab-label.component';
 import { TabBodyComponent } from './tab-body/tab-body.component';
+import { TabIndicatorDirective } from './tab-indicator.directive';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { TabBodyComponent } from './tab-body/tab-body.component';
     TabsComponent,
     TabItemComponent,
     TabLabelComponent,
-    TabBodyComponent],
+    TabBodyComponent,
+    TabIndicatorDirective],
   exports: [
     TabItemComponent,
     TabLabelComponent,
