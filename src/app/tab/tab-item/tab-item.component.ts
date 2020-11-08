@@ -1,6 +1,16 @@
-import {ChangeDetectionStrategy, Component, ContentChild, Input, OnInit} from '@angular/core';
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewRef
+} from '@angular/core';
 import {TabLabelComponent} from '../tab-label/tab-label.component';
-import {TabBodyComponent} from '../tab-body/tab-body.component';
+import {LazyContentDirective} from '../lazy-content.directive';
 
 @Component({
   selector: 'app-tab-item',
@@ -8,20 +18,33 @@ import {TabBodyComponent} from '../tab-body/tab-body.component';
   styleUrls: ['./tab-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabItemComponent implements OnInit {
+export class TabItemComponent implements OnInit, OnDestroy, AfterContentInit {
   @Input()
   label: string;
 
   @Input()
   isActive: boolean;
 
-  @ContentChild(TabBodyComponent)
-  bodyComponent: TabBodyComponent;
-
   @ContentChild(TabLabelComponent)
   labelComponent: TabLabelComponent;
 
-  constructor() {}
+  @ContentChild(LazyContentDirective, {read: TemplateRef})
+  _lazyBodyContent: TemplateRef<LazyContentDirective>;
 
-  ngOnInit(): void {}
+  bodyView: ViewRef;
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+    console.log('Init TabItemComponent');
+  }
+
+  ngAfterContentInit(): void {
+    this.bodyView = this._lazyBodyContent.createEmbeddedView(null);
+  }
+
+  ngOnDestroy(): void {
+    console.log('Destroy TabItemComponent');
+  }
 }

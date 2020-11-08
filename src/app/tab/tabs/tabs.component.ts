@@ -1,4 +1,13 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, QueryList} from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  QueryList,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
 import {TabItemComponent} from '../tab-item/tab-item.component';
 import {Observable} from 'rxjs';
 import {delay, map, startWith} from 'rxjs/operators';
@@ -9,13 +18,15 @@ import {delay, map, startWith} from 'rxjs/operators';
   styleUrls: ['./tabs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabsComponent implements AfterContentInit {
+export class TabsComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(TabItemComponent)
   tabs: QueryList<TabItemComponent>;
 
+  @ViewChild('vc', {read: ViewContainerRef}) vc: ViewContainerRef;
+
   tabItems$: Observable<TabItemComponent[]>;
 
-  activeTab: TabItemComponent;
+  activeTabItem: TabItemComponent;
 
   currentIndex = 0;
 
@@ -28,19 +39,30 @@ export class TabsComponent implements AfterContentInit {
       .pipe(delay(0))
       .pipe(map(() => this.tabs.toArray()));
 
-    this.activeTab = this.tabs.first;
+    this.activeTabItem = this.tabs.first;
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.vc);
+    this._loadDynamicContent(this.activeTabItem);
   }
 
   selectTab(tabItem: TabItemComponent): void {
-    if (this.activeTab === tabItem) {
+    if (this.activeTabItem === tabItem) {
       return;
     }
 
-    if (this.activeTab) {
-      this.activeTab.isActive = false;
+    if (this.activeTabItem) {
+      this.activeTabItem.isActive = false;
     }
 
-    this.activeTab = tabItem;
+    this.activeTabItem = tabItem;
     tabItem.isActive = true;
+    this._loadDynamicContent(tabItem);
+  }
+
+  private _loadDynamicContent(tabItem: TabItemComponent): void {
+    this.vc.detach();
+    this.vc.insert(tabItem.bodyView);
   }
 }

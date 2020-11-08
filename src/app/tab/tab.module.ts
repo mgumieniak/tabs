@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabItemComponent } from './tab-item/tab-item.component';
 import { TabLabelComponent } from './tab-label/tab-label.component';
-import { TabBodyComponent } from './tab-body/tab-body.component';
 import { TabIndicatorDirective } from './tab-indicator.directive';
+import { LazyContentDirective } from './lazy-content.directive';
 
 
 @NgModule({
@@ -12,13 +12,13 @@ import { TabIndicatorDirective } from './tab-indicator.directive';
     TabsComponent,
     TabItemComponent,
     TabLabelComponent,
-    TabBodyComponent,
-    TabIndicatorDirective],
+    TabIndicatorDirective,
+    LazyContentDirective],
   exports: [
     TabItemComponent,
     TabLabelComponent,
     TabsComponent,
-    TabBodyComponent
+    LazyContentDirective
   ],
   imports: [
     CommonModule,

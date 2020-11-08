@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-tab-label',
@@ -6,12 +6,18 @@ import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild} from
   styleUrls: ['./tab-label.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabLabelComponent implements OnInit {
+export class TabLabelComponent implements OnInit, OnDestroy {
   @ViewChild(TemplateRef)
   labelContent: TemplateRef<any>;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('Init TabLabelComponent');
+  }
+
+  ngOnDestroy(): void {
+    console.log('Destroy TabLabelComponent');
+  }
 
 }

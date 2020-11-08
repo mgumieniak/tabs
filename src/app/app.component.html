@@ -1,20 +1,20 @@
 <app-tabs>
   <app-tab-item>
     <app-tab-label>First tab</app-tab-label>
-    <app-tab-body info="Zakładka">
-      IO am first content
-    </app-tab-body>
+    <ng-template appLazyContent>
+        IO am first content
+    </ng-template>
   </app-tab-item>
-  <app-tab-item >
+  <app-tab-item>
     <app-tab-label>Second tab</app-tab-label>
-    <app-tab-body>
-      I am second Content
-    </app-tab-body>
+    <ng-template appLazyContent>
+        I am second Content >
+    </ng-template>
   </app-tab-item>
   <app-tab-item label="Third tab">
     <app-tab-label></app-tab-label>
-    <app-tab-body>
-      I am third content
-    </app-tab-body>
+    <ng-template appLazyContent>
+        I am third content
+    </ng-template>
   </app-tab-item>
 </app-tabs>

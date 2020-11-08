@@ -2,7 +2,7 @@
      appTabIndicator
      [index]="currentIndex">
   <div class="tab__item__label" (click)="selectTab(item);currentIndex=i"
-       [class.tab__item__active]="activeTab === item"
+       [class.tab__item__active]="activeTabItem === item"
        *ngFor="let item of tabItems$ | async;  index as i"
   >
     <ng-container *ngTemplateOutlet="item.labelComponent.labelContent">
@@ -13,9 +13,8 @@
 
 
 <div class="tab__item__content">
-    <ng-container *ngIf="activeTab && activeTab.bodyComponent">
-      <ng-container *ngTemplateOutlet="activeTab.bodyComponent.bodyContent">
-      </ng-container>
-    </ng-container>
+  <ng-container *ngIf="activeTabItem">
+    <ng-container #vc></ng-container>
+  </ng-container>
 </div>
 
